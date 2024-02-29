@@ -72,7 +72,7 @@ def search(request):
         return redirect("settings")
     if request.method=="POST":
         username=request.POST.get("username")
-        user=Profile.objects.filter(user__username=username)
+        user=Profile.objects.filter(user__username__contains=username)
         return render(request,"search.html",{'user':user,"username":username,"user_profile":Profile.objects.get(user=request.user).profile_img.url})
    
  
